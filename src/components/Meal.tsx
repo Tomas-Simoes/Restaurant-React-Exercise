@@ -1,6 +1,8 @@
 import React from "react";
 import { meal } from "../App";
 
+import "./Meal.css";
+
 const Meal = ({
   meal,
   changePrice,
@@ -15,15 +17,22 @@ const Meal = ({
   };
 
   return (
-    <div>
-      <label> {meal.strMeal} </label>
-      <input
-        type="checkBox"
-        value={meal.price}
-        onChange={checkBoxHandler}
-      ></input>
-      <label> {meal.price}$ </label>
-    </div>
+    <table className="table">
+      <tr>
+        <td>
+          <img src={meal.strMealThumb} className="img" alt={meal.strMeal} />
+        </td>
+        <td>{meal.strMeal}</td>
+        <td>
+          <input
+            type="checkBox"
+            value={meal.price}
+            onChange={checkBoxHandler}
+          ></input>
+          <label> {meal.price}$ </label>
+        </td>
+      </tr>
+    </table>
   );
 };
 

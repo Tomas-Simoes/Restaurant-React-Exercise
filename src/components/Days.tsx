@@ -19,15 +19,13 @@ const Days = ({
     <div>
       <h3>{name}</h3>
 
-      <ul key={name}>
-        {meals.map((meal) => {
-          return (
-            <div key={meal.idMeal}>
-              <Meal meal={meal} changePrice={changePriceHandler} />
-            </div>
-          );
-        })}
-      </ul>
+      {meals.map((meal) => {
+        return (
+          <div key={meal.idMeal}>
+            <Meal meal={meal} changePrice={changePriceHandler} />
+          </div>
+        );
+      })}
     </div>
   );
 };

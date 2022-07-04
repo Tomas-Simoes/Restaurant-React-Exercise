@@ -215,6 +215,8 @@ function App() {
 
   return (
     <div className="App">
+      <p> Total price to pay: {price}</p>
+
       {INITIAL_DAYS.map((day: day) => {
         return (
           <Days
@@ -225,8 +227,6 @@ function App() {
           />
         );
       })}
-
-      <p> Total price to pay: {price}</p>
     </div>
   );
 }
