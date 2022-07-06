@@ -15,6 +15,17 @@ const Days = ({
     updatePrice(price);
   };
 
+  if (meals.length === 0) {
+    return (
+      <div>
+        <h3>{name}</h3>
+        <p>
+          There are no meals available for this day, according to your search
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h3>{name}</h3>

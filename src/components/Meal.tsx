@@ -1,7 +1,7 @@
 import React from "react";
 import { meal } from "../App";
 
-import "./Meal.css";
+import "../style/Meals/Meal.css";
 
 const Meal = ({
   meal,
@@ -18,20 +18,22 @@ const Meal = ({
 
   return (
     <table className="table">
-      <tr>
-        <td>
-          <img src={meal.strMealThumb} className="img" alt={meal.strMeal} />
-        </td>
-        <td>{meal.strMeal}</td>
-        <td>
-          <input
-            type="checkBox"
-            value={meal.price}
-            onChange={checkBoxHandler}
-          ></input>
-          <label> {meal.price}$ </label>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>
+            <img src={meal.strMealThumb} className="img" alt={meal.strMeal} />
+          </td>
+          <td>{meal.strMeal}</td>
+          <td>
+            <input
+              type="checkBox"
+              value={meal.price}
+              onChange={checkBoxHandler}
+            ></input>
+            <label> {meal.price}$ </label>
+          </td>
+        </tr>
+      </tbody>
     </table>
   );
 };

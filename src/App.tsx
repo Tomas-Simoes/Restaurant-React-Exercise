@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./style/General/App.css";
 
 import Days from "./components/Days";
+import Search from "./components/Search";
 
 //? Interfaces
 export interface meal {
@@ -208,16 +209,35 @@ const INITIAL_DAYS: day[] = [
 
 function App() {
   const [price, setPrice] = useState(0);
+  const [filteredDays, setFilteredDays] = useState(INITIAL_DAYS);
 
   const updatePriceHandler = (newAddPrice: number): void => {
     setPrice((prevState) => (prevState += newAddPrice));
   };
 
+  const searchHandler = (textToSearch: string) => {
+    if (textToSearch) {
+      const filteredArr = INITIAL_DAYS.map((day) => {
+        const filteredMeals = day.meals.filter((meal) =>
+          meal.strMeal.toLowerCase().startsWith(textToSearch.toLowerCase())
+        );
+
+        return { name: day.name, meals: filteredMeals };
+      });
+
+      setFilteredDays(filteredArr);
+      return;
+    }
+
+    setFilteredDays(INITIAL_DAYS);
+  };
+
   return (
     <div className="App">
+      <Search onSearch={searchHandler} />
       <p> Total price to pay: {price}</p>
 
-      {INITIAL_DAYS.map((day: day) => {
+      {filteredDays.map((day: day) => {
         return (
           <Days
             key={day.name}
