@@ -3,6 +3,8 @@ import { meal } from "../App";
 
 import "../style/Meals/Meal.css";
 
+const checkedMeals: string[] = [];
+
 const Meal = ({
   meal,
   changePrice,
@@ -11,9 +13,15 @@ const Meal = ({
   changePrice: (price: number) => void;
 }) => {
   const checkBoxHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.checked
-      ? changePrice(+e.target.value)
-      : changePrice(+e.target.value * -1);
+    if (e.target.checked) {
+      checkedMeals.push(e.target.id);
+      changePrice(+e.target.value);
+    } else {
+      checkedMeals.splice(checkedMeals.indexOf(e.target.id), 1);
+      changePrice(+e.target.value * -1);
+    }
+
+    console.log(checkedMeals);
   };
 
   return (
@@ -27,8 +35,10 @@ const Meal = ({
           <td>
             <input
               type="checkBox"
+              id={meal.idMeal}
               value={meal.price}
               onChange={checkBoxHandler}
+              checked={checkedMeals.includes(meal.idMeal)}
             ></input>
             <label> {meal.price}$ </label>
           </td>
