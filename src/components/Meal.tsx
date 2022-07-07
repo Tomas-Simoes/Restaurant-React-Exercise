@@ -1,9 +1,7 @@
 import React from "react";
-import { meal } from "../App";
+import { meal, checkedMeals } from "../App";
 
 import "../style/Meals/Meal.css";
-
-let checkedMeals: string[] = [];
 
 const Meal = ({
   meal,
