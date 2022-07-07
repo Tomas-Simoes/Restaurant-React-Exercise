@@ -216,7 +216,7 @@ function App() {
   };
 
   const searchHandler = (textToSearch: string) => {
-    if (textToSearch) {
+    if (textToSearch !== "") {
       const filteredArr = INITIAL_DAYS.map((day) => {
         const filteredMeals = day.meals.filter((meal) =>
           meal.strMeal.toLowerCase().startsWith(textToSearch.toLowerCase())
@@ -228,7 +228,6 @@ function App() {
       setFilteredDays(filteredArr);
       return;
     }
-
     setFilteredDays(INITIAL_DAYS);
   };
 
