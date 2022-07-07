@@ -210,6 +210,10 @@ const INITIAL_DAYS: day[] = [
 //? CheckedMeals
 export let checkedMeals: string[] = [];
 
+export const updateCheckedMeals = (newArr: string[]) => {
+  checkedMeals = newArr;
+};
+
 function App() {
   const [price, setPrice] = useState(0);
   const [filteredDays, setFilteredDays] = useState(INITIAL_DAYS);

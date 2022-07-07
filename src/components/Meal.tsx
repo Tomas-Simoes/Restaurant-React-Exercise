@@ -1,5 +1,5 @@
 import React from "react";
-import { meal, checkedMeals } from "../App";
+import { meal, checkedMeals, updateCheckedMeals } from "../App";
 
 import "../style/Meals/Meal.css";
 
@@ -15,8 +15,8 @@ const Meal = ({
       checkedMeals.push(e.target.id);
       changePrice(+e.target.value);
     } else {
-      checkedMeals = checkedMeals.filter(
-        (meal: string) => meal !== e.target.id
+      updateCheckedMeals(
+        checkedMeals.filter((meal: string) => meal !== e.target.id)
       );
       changePrice(+e.target.value * -1);
     }
