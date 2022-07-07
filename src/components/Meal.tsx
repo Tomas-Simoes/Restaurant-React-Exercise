@@ -3,7 +3,7 @@ import { meal } from "../App";
 
 import "../style/Meals/Meal.css";
 
-const checkedMeals: string[] = [];
+let checkedMeals: string[] = [];
 
 const Meal = ({
   meal,
@@ -17,7 +17,9 @@ const Meal = ({
       checkedMeals.push(e.target.id);
       changePrice(+e.target.value);
     } else {
-      checkedMeals.splice(checkedMeals.indexOf(e.target.id), 1);
+      checkedMeals = checkedMeals.filter(
+        (meal: string) => meal !== e.target.id
+      );
       changePrice(+e.target.value * -1);
     }
 
